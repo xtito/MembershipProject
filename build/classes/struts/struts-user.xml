@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="user" namespace="/" extends="json-default">
+		<action name="user-*" method="{1}" class="userAction">
+			<result name="listAction">/WEB-INF/jsps/user/user-list.jsp</result>
+			<result name="ajax" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="jsonResult" type="json">
+				<!-- 加上这句，返回的字符串会有两个双引号 -->
+				<!-- <param name="contentType">text/html</param> -->
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	
+	
+</struts>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cn.membership.domain.UserType" table="user_type">
+    
+        <id name="tid" type="java.lang.Integer">
+            <column name="id" length="10" />
+            <generator class="native" />
+        </id>
+        
+        <property name="userTypeName" type="java.lang.String">
+            <column name="name" />
+        </property>
+        
+        <set name="users" table="users" inverse="false" lazy="true" cascade="save-update">
+            <key>
+                <column name="type_id" />
+            </key>
+            <one-to-many class="cn.membership.domain.Users" />
+        </set>
+    </class>
+    
+</hibernate-mapping>
